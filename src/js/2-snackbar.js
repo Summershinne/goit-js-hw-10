@@ -1,6 +1,5 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-console.log(iziToast);
 
 const formEl = document.querySelector('.form');
 
@@ -11,10 +10,13 @@ formEl.addEventListener('submit', onSubmit);
 function onSubmit(event) {
     event.preventDefault();
     makePromise(Object.fromEntries(new FormData(event.target))).then((delay) => {
-        console.log(`✅ Fulfilled promise in ${delay}ms`
-)
+        iziToast.show({
+            message: `✅ Fulfilled promise in ${delay}ms`
+        })
     }).catch((delay) => {
-console.log(`❌ Rejected promise in ${delay}ms`)
+        iziToast.show({
+            message: `❌ Rejected promise in ${delay}ms`
+        })
     })
 }
 
