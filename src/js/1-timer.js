@@ -20,7 +20,6 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-      console.log(selectedDates[0]);
       if (selectedDates[0] <= Date.now()) {
           button.disabled = true;
           iziToast.show({
@@ -41,6 +40,7 @@ button.addEventListener('click', startTimer);
 function startTimer() {
     let result = userSelectedDate - Date.now();
     button.disabled = true;
+    document.getElementById("datetime-picker").disabled = true;
    let idInterval = setInterval(() => { 
        result -= 1000;
        if (result < 1000) {
